@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for Each</title>
+</head>
+
+<body>
+    <h1>Hii</h1>
+    <script>
+        /* Exercice----1 */
+        console.log('Exercice----1');
+        let counter = 0;
+        const changes = [3, -1, 5, -2];
+
+        changes.forEach((action, index) => {
+            counter += action;
+            console.log(`Action ${index + 1} => Counter : ${counter}`);
+
+        });
+
+        /* Exercice----2 */
+        console.log('Exercice----2');
+        const tasks = [
+            { name: "Learn Javascript", done: true },
+            { name: "Wash Dishes", done: false },
+            { name: "pray", done: true },
+            { name: "sport", done: false },
+        ]
+
+        tasks.forEach((task, index) => {
+
+            if (task.done === false) {
+                console.log(`Task ${index + 1} => ${task.name}`);
+            }
+        })
+        /* Exercice----2 */
+        console.log('Exercice----3');
+        const products = [
+            { name: 'shoes', price: 5, quantity: 5 },
+            { name: 'umbrella', price: 3, quantity: 2 },
+            { name: 'basketball', price: 4, quantity: 3 },
+        ];
+
+        let total = 0;
+        products.forEach((element) => {
+            const subtotal = element.price * element.quantity;
+            console.log(`${element.name}--${element.price}$/item--quantity: ${element.quantity}, subtotal: ${subtotal}`);
+            total += subtotal
+        })
+        console.log(`Total: ${total}$`);
+
+
+        const students = [
+            { name: 'Elmahdi', note: 15 },
+            { name: 'Joe', note: 10 },
+            { name: 'Sara', note: 18 },
+            { name: 'Lara', note: 9 },
+        ];
+        let successful = 0;
+        students.forEach((student) => {
+            const name = student.name;
+            const note = student.note;
+            if (note >= 10) {
+                successful++;
+                console.log(name, note);
+            }
+        });
+        console.log(`successful students: ${successful}`);
+
+
+    </script>
+</body>
+
+</html>

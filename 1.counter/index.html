@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Counter</title>
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <h1>Smart Counter</h1>
+        <button class="theme_toggle" type="button">Dark mode</button>
+        <section class="quick_actions">
+            <h2 class="number_box"></h2>
+
+            <h2>Start from a number</h2>
+            <input class="number_input" type="number" placeholder="0">
+            <button class="enter">Enter</button>
+
+            <div class="plus_quick_actions">
+                <button class="p_one">+1</button>
+                <button class="p_two">+2</button>
+                <button class="p_three">+3</button>
+                <button class="p_four">+4</button>
+                <button class="p_five">+5</button>
+            </div>
+
+            <div class="minus_quick_actions">
+                <button class="m_one">-1</button>
+                <button class="m_two">-2</button>
+                <button class="m_three">-3</button>
+                <button class="m_four">-4</button>
+                <button class="m_five">-5</button>
+            </div>
+        </section>
+
+        <section class="action_with_number">
+            <h2>increase or decrease with a number</h2>
+            <input class="specific_number" type="number" placeholder="0">
+            <button class="plus_entered_number">+ Entered Number</button>
+            <button class="minus_entered_number">- Entered Number</button>
+        </section>
+
+        <section class="auto_mode">
+            <h2>Auto Mode</h2>
+
+            <label for="auto_step_size">Step size</label>
+            <input id="auto_step_size" class="auto_step_size" type="number" placeholder="0">
+
+            <p>Direction</p>
+            <input checked id="auto_add" name="auto_direction" type="radio" value="Add">
+            <label for="auto_add">Add</label>
+            <input id="auto_subtract" name="auto_direction" type="radio" value="Subtract">
+            <label for="auto_subtract">Subtract</label>
+
+            <button class="auto_start">Start</button>
+            <button class="auto_pause">Pause</button>
+        </section>
+
+        <section>
+            <button class="reset">Reset</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

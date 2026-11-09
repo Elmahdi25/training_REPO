@@ -1,0 +1,396 @@
+/* 1. Colors and page layout */
+body.dark_mode {
+  color-scheme: dark;
+  --page: #10141d;
+  --card: #1c2230;
+  --text: #f4f6fb;
+  --muted: #b5bfd2;
+  --border: #414b60;
+}
+
+body.dark_mode .number_box {
+  background: linear-gradient(145deg, #252e40, #161d2a);
+  border-color: var(--border);
+}
+
+body.dark_mode input[type="number"],
+body.dark_mode .reset,
+body.dark_mode .theme_toggle {
+  background: #151c29;
+}
+
+body.dark_mode .reset,
+body.dark_mode .theme_toggle {
+  border-color: #a78bfa;
+}
+
+body.dark_mode .auto_mode input[type="radio"]:not(:checked) + label {
+  background: #2a3447;
+}
+
+/* Keep dark text on the bright accent buttons and selected options. */
+body.dark_mode .plus_quick_actions button,
+body.dark_mode .minus_quick_actions button,
+body.dark_mode .plus_entered_number,
+body.dark_mode .minus_entered_number,
+body.dark_mode .auto_start,
+body.dark_mode .auto_pause,
+body.dark_mode .auto_mode input[type="radio"]:checked + label {
+  color: #192131;
+}
+:root {
+  color-scheme: light;
+  --page: #f8f7fa;
+  --card: #ffffff;
+  --text: #192131;
+  --muted: #526079;
+  --border: #d6dce8;
+  --mint: #3af2cd;
+  --lavender: #d8bffc;
+  --coral: #ff9688;
+  --purple: #8252cf;
+  --shadow: 0 8px 24px rgb(31 41 66 / 8%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", sans-serif;
+  line-height: 1.4;
+}
+
+main {
+  width: min(calc(100% - 2rem), 90rem);
+  margin-inline: auto;
+  padding-block: clamp(1.5rem, 4vw, 3rem);
+  display: grid;
+  gap: 1rem;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  text-align: center;
+  font-size: clamp(2.25rem, 6vw, 4.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(1.125rem, 2.4vw, 2rem);
+  line-height: 1.15;
+}
+
+.quick_actions,
+.action_with_number,
+.auto_mode {
+  min-width: 0;
+  padding: clamp(0.875rem, 2vw, 1.5rem);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+/* 2. Shared inputs and buttons */
+button,
+input {
+  font: inherit;
+}
+
+input[type="number"] {
+  width: 100%;
+  min-width: 0;
+  min-height: 3rem;
+  padding: 0.625rem 0.875rem;
+  border: 2px solid var(--border);
+  border-radius: 0.875rem;
+  background: white;
+  color: var(--text);
+  font-weight: 650;
+}
+
+input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+button {
+  min-width: 0;
+  min-height: 3rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid transparent;
+  border-radius: 0.875rem;
+  background: #edf0f7;
+  color: var(--text);
+  font-weight: 750;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.plus_quick_actions button,
+.plus_entered_number,
+.auto_start {
+  background: linear-gradient(#60f7d9, var(--mint));
+}
+
+.minus_quick_actions button,
+.minus_entered_number {
+  background: linear-gradient(#e7d7ff, var(--lavender));
+}
+
+.auto_pause {
+  background: linear-gradient(#ffafa4, var(--coral));
+}
+
+@media (hover: hover) {
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgb(31 41 66 / 14%);
+  }
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:focus-visible,
+input:focus-visible,
+.auto_mode input[type="radio"]:focus-visible + label {
+  outline: 3px solid var(--purple);
+  outline-offset: 3px;
+}
+
+/* 3. Counter display and quick actions */
+.quick_actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.number_box,
+.quick_actions > h2,
+.plus_quick_actions,
+.minus_quick_actions {
+  grid-column: 1 / -1;
+}
+
+.number_box {
+  grid-row: 1;
+  display: grid;
+  place-items: center;
+  min-height: clamp(10rem, 24vw, 21rem);
+  padding: 0.75rem;
+  border: 1px solid #ccd5e5;
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, #e8ecf7, #dfe5f2);
+  font-size: clamp(4.5rem, 13vw, 12rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
+}
+
+.plus_quick_actions {
+  grid-row: 2;
+}
+
+.minus_quick_actions {
+  grid-row: 3;
+}
+
+.plus_quick_actions,
+.minus_quick_actions {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(0.3rem, 1vw, 0.75rem);
+}
+
+.plus_quick_actions button,
+.minus_quick_actions button {
+  min-height: clamp(2.75rem, 5vw, 4.5rem);
+  padding-inline: 0.15rem;
+  font-size: clamp(0.95rem, 2.5vw, 2rem);
+}
+
+.quick_actions > h2:not(.number_box) {
+  grid-row: 4;
+  margin-top: 0.25rem;
+  font-size: 1rem;
+}
+
+.quick_actions > .number_input,
+.quick_actions > .enter {
+  grid-row: 5;
+}
+
+/* 4. Entered-number controls */
+.action_with_number {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+/* 5. Auto Mode */
+.auto_mode {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.auto_mode h2,
+.auto_mode label[for="auto_step_size"],
+.auto_step_size,
+.auto_mode p {
+  grid-column: 1 / -1;
+}
+
+.auto_mode p,
+.auto_mode label[for="auto_step_size"] {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* Keep the radios keyboard-accessible while styling their labels. */
+.auto_mode input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  clip-path: inset(50%);
+}
+
+.auto_mode input[type="radio"] + label {
+  display: grid;
+  place-items: center;
+  min-height: 3rem;
+  padding: 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 0.875rem;
+  background: #edf0f7;
+  font-weight: 750;
+  text-align: center;
+  cursor: pointer;
+}
+
+#auto_add:checked + label {
+  background: var(--mint);
+}
+
+#auto_subtract:checked + label {
+  background: var(--lavender);
+}
+
+/* 6. Reset */
+main > section:last-child {
+  display: flex;
+  justify-content: center;
+}
+
+.reset {
+  width: min(100%, 20rem);
+  border: 2px solid var(--purple);
+  background: white;
+  box-shadow: var(--shadow);
+  font-size: 1.125rem;
+}
+
+/* 7. Desktop layout */
+@media (min-width: 56rem) {
+  main {
+    grid-template-columns: 1.05fr 1fr;
+  }
+
+  main > h1,
+  main > section:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .quick_actions {
+    grid-column: 1;
+    grid-row: 2 / 4;
+  }
+
+  .action_with_number {
+    grid-column: 2;
+    grid-row: 2;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+
+  .action_with_number h2 {
+    grid-column: 1 / -1;
+  }
+
+  .specific_number {
+    grid-column: 1;
+    grid-row: 2 / 4;
+    align-self: center;
+  }
+
+  .plus_entered_number,
+  .minus_entered_number {
+    grid-column: 2;
+  }
+
+  .auto_mode {
+    grid-column: 2;
+    grid-row: 3;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .auto_mode label[for="auto_step_size"] {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+
+  .auto_mode p {
+    grid-column: 3 / 5;
+    grid-row: 2;
+  }
+
+  .auto_step_size {
+    grid-column: 1 / 3;
+    grid-row: 3;
+  }
+
+  .auto_mode label[for="auto_add"] {
+    grid-column: 3;
+    grid-row: 3;
+  }
+
+  .auto_mode label[for="auto_subtract"] {
+    grid-column: 4;
+    grid-row: 3;
+  }
+
+  .auto_start,
+  .auto_pause {
+    grid-column: span 2;
+    grid-row: 4;
+    min-height: 3.75rem;
+    font-size: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button {
+    transition: none;
+  }
+
+  button:hover,
+  button:active {
+    transform: none;
+  }
+}
