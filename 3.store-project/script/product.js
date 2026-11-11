@@ -1,7 +1,7 @@
 const products = [
   {
     id: "product-001",
-    image: "images/products/products/black-jersey-hijab.jpg",
+    image: "images/products/black-jersey-hijab.jpg",
     name: "Black Everyday Jersey Hijab",
     rating: { stars: 4.8, count: 124 },
     priceCents: 1499,

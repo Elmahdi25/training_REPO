@@ -1,0 +1,120 @@
+.flory-footer {
+  padding: 2rem clamp(1rem, 4vw, 3.5rem) 1rem;
+  border-top: 1px solid var(--beige, #eadbd1);
+  background: linear-gradient(
+    135deg,
+    var(--cream, #fffaf5),
+    var(--blush, #fae9ec)
+  );
+  color: var(--muted, #765f66);
+}
+
+.flory-footer-inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1.25rem 2rem;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.flory-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.flory-footer a:hover {
+  color: var(--rose, #93465d);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.flory-footer a:focus-visible {
+  outline: 2px solid var(--rose, #93465d);
+  outline-offset: 3px;
+  border-radius: 0.2rem;
+}
+
+.flory-footer .flory-footer-brand {
+  justify-self: start;
+}
+
+.flory-footer-brand img {
+  display: block;
+  width: clamp(7rem, 15vw, 10rem);
+  height: auto;
+}
+
+@media (max-width: 48rem) {
+  .flory-footer .flory-footer-brand {
+    justify-self: center;
+  }
+}
+
+.flory-footer-nav {
+  justify-self: end;
+}
+
+.flory-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.25rem clamp(0.875rem, 2vw, 1.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flory-footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: 0.875rem;
+}
+
+.flory-footer-credit {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--beige, #eadbd1);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.flory-footer-credit a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Tablet and mobile */
+@media (max-width: 48rem) {
+  .flory-footer-inner {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 0.75rem;
+  }
+
+  .flory-footer-nav {
+    justify-self: center;
+  }
+
+  .flory-footer-links {
+    justify-content: center;
+  }
+
+  .flory-footer-credit {
+    width: 100%;
+  }
+}
+
+/* Small phones */
+@media (max-width: 30rem) {
+  .flory-footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.25rem;
+    text-align: center;
+  }
+}
