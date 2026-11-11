@@ -247,4 +247,12 @@ const products = [
     priceCents: 2799,
     keywords: ["hijab", "undercap", "magnets", "bundle"],
   },
+  {
+    id: "product-032",
+    image: "images/products/Multicoloured-Hijab-Pins.jpg",
+    name: "Multicoloured Hijab Pins",
+    rating: { stars: 4.5, count: 201 },
+    priceCents: 599,
+    keywords: ["Women's Clips", "pins", "multicoloured", "Clips for Sweaters"],
+  },
 ];

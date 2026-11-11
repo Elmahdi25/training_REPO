@@ -1,0 +1,1 @@
+const bag_cart = [];
