@@ -23,7 +23,7 @@ products.forEach((product) => {
                     <div class="product-actions">
                         <label class="product-quantity">
                             <span>Qty</span>
-                            <select name="quantity" aria-label="Quantity">
+                            <select name="quantity" aria-label="Quantity" class="js-quantity-selector-${product.id}">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -51,11 +51,12 @@ const js_add_to_cart = document.querySelectorAll(".js-add-to-cart");
 
 const bag_count = document.querySelector(".bag-count");
 
-let quantity = 0;
-
 js_add_to_cart.forEach((button) => {
   button.addEventListener("click", () => {
     const product_id = button.dataset.productId;
+    const js_quantity_selector = document.querySelector(
+      `.js-quantity-selector-${product_id}`,
+    );
     let matching_item;
     bag_cart.forEach((item) => {
       if (product_id === item.product_id) {
@@ -63,11 +64,11 @@ js_add_to_cart.forEach((button) => {
       }
     });
     if (matching_item) {
-      matching_item.quantity++;
+      matching_item.quantity += Number(js_quantity_selector.value);
     } else {
       bag_cart.push({
         product_id: product_id,
-        quantity: 1,
+        quantity: Number(js_quantity_selector.value),
       });
     }
 
@@ -77,5 +78,7 @@ js_add_to_cart.forEach((button) => {
     });
 
     bag_count.textContent = cart_quantity;
+
+    console.log(bag_cart);
   });
 });
