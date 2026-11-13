@@ -1,1 +1,1 @@
-const bag_cart = [];
+export const bag_cart = [];

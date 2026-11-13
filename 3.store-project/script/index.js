@@ -1,3 +1,6 @@
+import { bag_cart } from "./bag_cart.js";
+/* import { bag_cart as my_bag_cart } from "./bag_cart.js"; 
+it will change the name of bag_crt to what ever i want */
 const js_products_grid = document.querySelector(".js-products-grid");
 
 js_products_grid.innerHTML = "";
@@ -92,9 +95,9 @@ js_add_to_cart.forEach((button) => {
     console.log(js_added_message);
     clearTimeout(time_out_id);
     js_added_message.hidden = false;
-    time_out_id = setTimeout(()=>{
-      js_added_message.hidden = true
-    },2000)
+    time_out_id = setTimeout(() => {
+      js_added_message.hidden = true;
+    }, 2000);
     /**here ?? */
   });
 });
