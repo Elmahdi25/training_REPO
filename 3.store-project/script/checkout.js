@@ -1,9 +1,10 @@
-import { bag_cart } from "../data/bag_cart.js";
+import { bag_cart, remove_from_cart } from "../data/bag_cart.js";
 import { products } from "../data/product.js";
 import { format_currency } from "./utils/money.js";
 
 const js_checkout_items = document.querySelector(".js-checkout-items");
 js_checkout_items.innerHTML = "";
+
 bag_cart.forEach((item) => {
   const product_id = item.product_id;
   const product_quantity = item.quantity;
@@ -15,7 +16,7 @@ bag_cart.forEach((item) => {
   });
 
   js_checkout_items.innerHTML += `
-    <article class="checkout-item" data-product-id="${product_id}">
+    <article class="checkout-item js-checkout-item-container-${product_id}" data-product-id="${product_id}">
                     <p class="checkout-delivery-date">
                         Delivery date: <time datetime="2026-11-24">Tuesday, November 24</time>
                     </p>
@@ -31,7 +32,7 @@ bag_cart.forEach((item) => {
                             <div class="checkout-product-actions">
                                 <span>Quantity: <span class="js-item-quantity">${product_quantity}</span></span>
                                 <button type="button" class="js-update-quantity">Update</button>
-                                <button type="button" class="js-remove-item">Remove</button>
+                                <button type="button" class="js-remove-item" data-product-id=${matching_items.id}>Remove</button>
                             </div>
                         </div>
 
@@ -59,4 +60,17 @@ bag_cart.forEach((item) => {
                     </div>
                 </article>
     `;
+});
+
+
+const js_remove_item = document.querySelectorAll(".js-remove-item");
+
+js_remove_item.forEach((button) => {
+  button.addEventListener("click", () => {
+    const product_id = button.dataset.productId;
+    const js_checkout_item_container = document.querySelector(`.js-checkout-item-container-${product_id}`);
+    remove_from_cart(product_id);
+    js_checkout_item_container.remove();
+    
+  });
 });

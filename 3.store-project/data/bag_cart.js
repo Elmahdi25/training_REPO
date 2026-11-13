@@ -1,4 +1,4 @@
-export const bag_cart = [
+export let bag_cart = [
   {
     product_id: "product-001",
     quantity: 2,
@@ -28,4 +28,15 @@ export function add_to_bag_cart(product_id, js_quantity_selector) {
       quantity: Number(js_quantity_selector.value),
     });
   }
+}
+
+export function remove_from_cart(product_id) {
+  const new_bag_cart = [];
+  bag_cart.forEach((item) => {
+    if (item.product_id !== product_id) {
+      new_bag_cart.push(item);
+    }
+  });
+  bag_cart = new_bag_cart;
+  console.log(bag_cart);
 }

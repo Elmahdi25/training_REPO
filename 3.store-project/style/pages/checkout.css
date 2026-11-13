@@ -167,8 +167,7 @@
   background: transparent;
   color: var(--rose);
   font: inherit;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  
   cursor: pointer;
 }
 
