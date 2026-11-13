@@ -1,6 +1,7 @@
 import { bag_cart } from "./bag_cart.js";
 /* import { bag_cart as my_bag_cart } from "./bag_cart.js"; 
 it will change the name of bag_crt to what ever i want */
+import { products } from "./product.js";
 const js_products_grid = document.querySelector(".js-products-grid");
 
 js_products_grid.innerHTML = "";
