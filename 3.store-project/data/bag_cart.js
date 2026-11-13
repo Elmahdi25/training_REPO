@@ -1,4 +1,13 @@
-export const bag_cart = [];
+export const bag_cart = [
+  {
+    product_id: "product-001",
+    quantity: 2,
+  },
+  {
+    product_id: "product-002",
+    quantity: 1,
+  },
+];
 
 export function add_to_bag_cart(product_id, js_quantity_selector) {
   let matching_item;
