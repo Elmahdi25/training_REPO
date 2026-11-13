@@ -2,7 +2,7 @@ import { bag_cart, add_to_bag_cart } from "../data/bag_cart.js";
 /* import { bag_cart as my_bag_cart } from "./bag_cart.js"; 
 it will change the name of bag_crt to what ever i want */
 import { products } from "../data/product.js";
-
+import { format_currency } from "./utils/money.js";
 const js_products_grid = document.querySelector(".js-products-grid");
 
 js_products_grid.innerHTML = "";
@@ -23,7 +23,7 @@ products.forEach((product) => {
                         <span class="product-review-count">${product.rating.count} reviews</span>
                     </div>
 
-                    <p class="product-price">€${(product.priceCents / 100).toFixed(2)}</p>
+                    <p class="product-price">€${format_currency(product)}</p>
 
                     <div class="product-actions">
                         <label class="product-quantity">
@@ -61,7 +61,6 @@ const js_add_to_cart = document.querySelectorAll(".js-add-to-cart");
 
 const bag_count = document.querySelector(".bag-count");
 
-
 function update_bag_cat(time_out_id, js_added_message) {
   let cart_quantity = 0;
   bag_cart.forEach((item) => {
@@ -76,7 +75,6 @@ function update_bag_cat(time_out_id, js_added_message) {
     js_added_message.hidden = true;
   }, 2000);
 }
-
 
 js_add_to_cart.forEach((button) => {
   let time_out_id;
