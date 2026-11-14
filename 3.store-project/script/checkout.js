@@ -75,7 +75,7 @@ js_remove_item.forEach((button) => {
   });
 });
 
-function update_bag_cart_quantity() {
+export function update_bag_cart_quantity() {
   const js_checkout_item_count = document.querySelector(
     ".js-checkout-item-count",
   );

@@ -61,19 +61,18 @@ const js_add_to_cart = document.querySelectorAll(".js-add-to-cart");
 
 const bag_count = document.querySelector(".bag-count");
 
- function update_bag_cat(time_out_id, js_added_message) {
+function update_bag_cat() {
   let cart_quantity = 0;
   bag_cart.forEach((item) => {
     cart_quantity += item.quantity;
   });
 
   bag_count.textContent = cart_quantity;
-  clearTimeout(time_out_id);
-  js_added_message.hidden = false;
-  time_out_id = setTimeout(() => {
-    js_added_message.hidden = true;
-  }, 2000);
 }
+update_bag_cat();
+
+  
+
 
 js_add_to_cart.forEach((button) => {
   let time_out_id;
@@ -88,6 +87,11 @@ js_add_to_cart.forEach((button) => {
     );
 
     add_to_bag_cart(product_id, js_quantity_selector);
-    update_bag_cat(time_out_id, js_added_message);
+    update_bag_cat();
+    clearTimeout(time_out_id);
+    js_added_message.hidden = false;
+    time_out_id = setTimeout(() => {
+      js_added_message.hidden = true;
+    }, 2000);
   });
 });
