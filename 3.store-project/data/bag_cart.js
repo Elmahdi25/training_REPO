@@ -17,7 +17,7 @@ if (!bag_cart) {
   ];
 }
 
-function save_to_stotage() {
+export function save_to_stotage() {
   localStorage.setItem("bag_cart", JSON.stringify(bag_cart));
 }
 

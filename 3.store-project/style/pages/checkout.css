@@ -171,6 +171,33 @@
   cursor: pointer;
 }
 
+.checkout-quantity-input {
+  width: 4rem;
+  min-height: 2.25rem;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--beige);
+  border-radius: 0.65rem;
+  background: var(--cream);
+  color: var(--ink);
+  font: inherit;
+}
+
+.checkout-product-actions .save-quantity-link {
+  min-height: 2.25rem;
+  padding: 0.25rem 0.85rem;
+  border: 1px solid var(--beige);
+  border-radius: 999px;
+  background: var(--blush);
+  color: var(--rose);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.checkout-product-actions .save-quantity-link:hover {
+  border-color: var(--rose);
+  background: var(--rose);
+  color: var(--white);
+}
 /* Delivery options */
 .checkout-delivery-options {
   display: grid;
