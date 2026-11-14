@@ -1,6 +1,7 @@
 import { bag_cart, remove_from_cart } from "../data/bag_cart.js";
 import { products } from "../data/product.js";
 import { format_currency } from "./utils/money.js";
+import { calculate_bag_cart_quantity } from "../data/bag_cart.js";
 const js_checkout_items = document.querySelector(".js-checkout-items");
 js_checkout_items.innerHTML = "";
 
@@ -75,15 +76,12 @@ js_remove_item.forEach((button) => {
   });
 });
 
-export function update_bag_cart_quantity() {
+function update_bag_cart_quantity() {
   const js_checkout_item_count = document.querySelector(
     ".js-checkout-item-count",
   );
-  let cart_quantity = 0;
-  bag_cart.forEach((item) => {
-    cart_quantity += item.quantity;
-    
-  });
+  const cart_quantity = calculate_bag_cart_quantity(); 
+  
   js_checkout_item_count.innerHTML = `(${cart_quantity} item)`;
 }
 update_bag_cart_quantity();

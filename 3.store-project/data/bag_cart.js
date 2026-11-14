@@ -50,3 +50,11 @@ export function remove_from_cart(product_id) {
   bag_cart = new_bag_cart;
   save_to_stotage();
 }
+
+export function calculate_bag_cart_quantity() {
+  let cart_quantity = 0;
+  bag_cart.forEach((item) => {
+    cart_quantity += item.quantity;
+  });
+  return cart_quantity;
+}
