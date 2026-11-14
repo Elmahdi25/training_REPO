@@ -62,15 +62,25 @@ bag_cart.forEach((item) => {
     `;
 });
 
-
 const js_remove_item = document.querySelectorAll(".js-remove-item");
 
 js_remove_item.forEach((button) => {
   button.addEventListener("click", () => {
     const product_id = button.dataset.productId;
-    const js_checkout_item_container = document.querySelector(`.js-checkout-item-container-${product_id}`);
+    const js_checkout_item_container = document.querySelector(
+      `.js-checkout-item-container-${product_id}`,
+    );
     remove_from_cart(product_id);
     js_checkout_item_container.remove();
-    
   });
 });
+
+const js_checkout_item_count = document.querySelector(
+  ".js-checkout-item-count",
+);
+let cart_quantity = 0;
+bag_cart.forEach((item) => {
+  cart_quantity += item.quantity;
+  js_checkout_item_count.innerHTML = `(${cart_quantity} item)`;
+});
+
